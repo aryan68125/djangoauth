@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    h1 {
+        color: green;
+    }
+
+    /* Styling the button */
+    .btn {
+        cursor: pointer;
+        border: 1px solid #3498db;
+        background-color: transparent;
+        height: 50px;
+        width: 200px;
+        color: #3498db;
+        font-size: 1.5em;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
+    img{
+  margin-bottom: 25px;
+}
+</style>
+
+<div class="login-box">
+  <h2>To do list application</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <!---message box--->
+    {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-info">
+            {{ message }}
+          </div>
+          {% endfor %}
+    {% endif %}
+
+    <div class="user-box">
+        <p style  = "color: #FFFFFF;">Hello I am Aditya Kumar</p>
+    </div>
+    <div class="user-box">
+        <img src="static/img/dev.jpg" class="img-thumbnail" alt="...">
+    </div>
+    <div class="user-box">
+      <p style  = "color: #FFFFFF;">I have made this app as a pet project. But that doesn't mean you cannot use it. As the name suggest it does what it the name says</p>
+    </div>
+    <div class="user-box">
+      <p style  = "color: #FFFFFF;">So enjoy this application and don't forget to give me feedback good or bad it doesn't matter. I will definitely try to improve upon it.</p>
+    </div>
+    <div class="user-box">
+      <h2 style  = "color: #FFFFFF;">Contact Me:-</h2>
+      <p style  = "color: #FFFFFF;">Email - aryan68125@gmail.com</p>
+    </div>
+
+    <a href="{%url 'register'%}">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Please Register Yourself here
+    </a>
+  </form>
+</div>
+{% endblock %}
