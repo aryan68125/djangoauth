@@ -128,17 +128,22 @@ class RegistrationView(View):
 
 class ActivateAccountView(View):
     def get(self, request,uidb64,token):
+        print(f"request = {request}")
         #in here we will check if the token is valid or not
         try:
             uid = force_text(urlsafe_base64_decode(uidb64))
-            user = User.objects.filter(pk=uid).exists()
-        except Exception as e:
+            print(f"uid = {uid}")
+            user = User.objects.get(pk=uid)
+            print(f"user = {user}")
+        except User.DoesNotExist:
             user = None
 
         #now check the user before activating them
         if user is not None and generated_token.check_token(user,token):
+            print(f"token = {token}")
             #now activate the user in the database for operational ready i.e user now have the permission to use the web Application
             user.is_active = True
+            ptrint(f"user active stauts = {user.is_active}")
             user.save()
             messages.add_message(request,messages.INFO,'account activated successfully')
             return redirect('login')
