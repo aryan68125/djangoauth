@@ -143,7 +143,7 @@ class ActivateAccountView(View):
             print(f"token = {token}")
             #now activate the user in the database for operational ready i.e user now have the permission to use the web Application
             user.is_active = True
-            ptrint(f"user active stauts = {user.is_active}")
+            print(f"user active stauts = {user.is_active}")
             user.save()
             messages.add_message(request,messages.INFO,'account activated successfully')
             return redirect('login')
