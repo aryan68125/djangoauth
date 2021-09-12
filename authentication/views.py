@@ -133,6 +133,8 @@ class ActivateAccountView(View):
         try:
             uid = force_text(urlsafe_base64_decode(uidb64))
             print(f"uid = {uid}")
+            #do not use User.objects.filter(pk=uid).exists(): instead use User.objects.get(pk=uid) otherwise when you
+            #deploy your application on heroku it will throuw an exception
             user = User.objects.get(pk=uid)
             print(f"user = {user}")
         except User.DoesNotExist:
