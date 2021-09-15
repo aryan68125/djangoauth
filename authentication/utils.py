@@ -2,7 +2,7 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 #inorder to use the property is_active of the user we need to import six module from django.utils
-from django.utils import six
+import six
 
 class TokenGenerator(PasswordResetTokenGenerator):
     #it is constantly looking out if anything changes
